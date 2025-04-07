@@ -33,44 +33,22 @@ function draw() {
     requestAnimationFrame(draw);
 }
 
-
-myArray = [400, 200, 200, 400, 200, 200, 200, 400, 200, 200, 200, 200, 400]
-
 do {
-    let rand = Math.floor(Math.random() * 3 + 1)
-    if (rand == 1) {
-        myArray.push(200)
-    } else if (rand == 2){
-        myArray.push(400)
-    }
-    
-} while(myArray.length < 100)
+    myArray.push(1)
+} while (myArray.length < 100)
+
+myArray = myArray.map(num => 300)
+
 
 document.addEventListener("keydown", keydownHandler)
 
 function keydownHandler(event) {
 
     console.log(event.code)
-    if (event.code == "Digit1") {
-        let x = myArray.length
-        for (let i = 0; i < x; i++) {
-            if (myArray.includes(400)) {
-                myArray.splice(myArray.indexOf(400), 1)
-            }
-        }
-    } else if (event.code == "Digit2") {
-        let x = myArray.length
-        for (let i = 0; i < x; i++) {
-            if (myArray.includes(200)) {
-                // console.log(i)
-                console.log(myArray)
-                console.log(myArray.indexOf(200))
-                myArray.splice(myArray.indexOf(200), 1)
-
-
-             
-            } 
-        }
+    if (event.code == "Space") {
+        myArray =  myArray.map(num => 300 +  Math.floor((Math.random() * (6 + 5) - 5)))
+    } else if (event.code == "KeyR") {
+        myArray = myArray.map(num => 300)
     }             
 }
 
